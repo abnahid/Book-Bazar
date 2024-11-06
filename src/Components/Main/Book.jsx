@@ -8,7 +8,7 @@ const Book = ({ book }) => {
     <Link to={`/books/${bookId}`}>
       <div className="card border rounded-2xl border-gray-900 border-opacity-10 w-96 p-6 font-Worsens">
         <figure className="h-56 px-24 py-8 bg-gray-100 rounded-2xl">
-          <img src={image} alt={bookName} className="h-full" />
+          <img src={image} alt={bookName} className="h-full skew-y-3" />
         </figure>
         <div className="card-body p-0 mt-4">
           <div className="flex gap-2 mb-2">

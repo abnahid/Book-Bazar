@@ -4,16 +4,34 @@ import { RxCross2 } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  const activeStyle =
+    "font-semibold text-custom-green border rounded-lg border-green-600";
+
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? activeStyle : "")}
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/listedBooks">Listed Books</NavLink>
+        <NavLink
+          to="/listedBooks"
+          className={({ isActive }) => (isActive ? activeStyle : "")}
+        >
+          Listed Books
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/dashboard">dashboard</NavLink>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) => (isActive ? activeStyle : "")}
+        >
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
@@ -41,11 +59,15 @@ const NavBar = () => {
         <a className="btn btn-ghost text-xl">Book Vibe</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 space-x-4">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
-        <a className="btn bg-custom-green hover:bg-green-400">Sign In</a>
-        <a className="btn bg-custom-blue hover:bg-teal-300">Sign Up</a>
+        <a className="btn bg-custom-green hover:bg-green-400 text-white">
+          Sign In
+        </a>
+        <a className="btn bg-custom-blue hover:bg-teal-300 text-white">
+          Sign Up
+        </a>
       </div>
     </div>
   );

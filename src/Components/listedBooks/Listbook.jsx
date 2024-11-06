@@ -48,7 +48,7 @@ const Listbook = ({ listbook }) => {
           </div>
 
           {/* Publisher, Year, and Pages */}
-          <div className="flex items-center text-gray-500 mb-2 space-x-2">
+          <div className="flex items-center text-gray-500 my-4 space-x-2">
             <div className="flex items-center gap-2">
               <FaUserGroup /> Publisher: {publisher}
             </div>

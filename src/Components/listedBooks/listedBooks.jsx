@@ -43,7 +43,10 @@ const ListedBooks = () => {
 
   return (
     <div>
-      <div className="dropdown my-9">
+      <div className="bg-gray-900 bg-opacity-5 rounded-2xl py-5 mt-4">
+        <h2 className="text-3xl font-bold text-center">Books</h2>
+      </div>
+      <div className="dropdown my-8 flex justify-center">
         <div tabIndex={0} role="button" className="btn m-1">
           {sort ? `Sort by: ${sort}` : "Sort By"}
         </div>
