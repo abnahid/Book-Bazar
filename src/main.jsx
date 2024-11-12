@@ -8,7 +8,11 @@ import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 import Error from "./Components/Error.jsx";
 import Home from "./Components/Home.jsx";
 import BooksDetail from "./Components/Main/BooksDetail.jsx";
+import PrivateRoute from "./Components/Main/Private/PrivateRoute.jsx";
 import ListedBooks from "./Components/listedBooks/listedBooks.jsx";
+import Login from "./Firebase/Login.jsx";
+import AuthProvider from "./Firebase/Providers/AuthProvider.jsx";
+import SignUp from "./Firebase/SignUp.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -23,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "listedBooks",
-        element: <ListedBooks />,
+        element: <PrivateRoute><ListedBooks /></PrivateRoute> ,
         loader: () => fetch("/booksData.json"),
       },
       {
@@ -35,13 +39,23 @@ const router = createBrowserRouter([
         element: <BooksDetail />,
         loader: () => fetch("/booksData.json"),
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signup",
+        element: <SignUp />,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer />
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </AuthProvider>
   </StrictMode>
 );
