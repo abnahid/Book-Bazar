@@ -151,6 +151,7 @@ const SignUp = () => {
                   maxLength="256"
                   name="email"
                   placeholder="Email Address"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                   required
                 />
               </div>
@@ -166,12 +167,14 @@ const SignUp = () => {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Password (min 8 characters)"
+                  minLength="8"
                   required
                   className="mb-2 block h-9 w-full border border-black bg-[#f2f2f7] px-3 py-6 pl-14 text-sm text-[#333333]"
                 />
                 <button
                   className="w-[25px] h-[25px] absolute right-4  top-3 cursor-pointer"
                   onClick={() => setShowPassword((prevState) => !prevState)}
+                  type="button"
                 >
                   {showPassword ? <IoEyeSharp /> : <HiMiniEyeSlash />}
                 </button>
@@ -195,6 +198,7 @@ const SignUp = () => {
               <button
                 className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600"
                 onClick={handleSignUp}
+                type="submit"
               >
                 Join Book Bazar
               </button>

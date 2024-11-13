@@ -15,41 +15,57 @@ import AuthProvider from "./Firebase/Providers/AuthProvider.jsx";
 import SignUp from "./Firebase/SignUp.jsx";
 import "./index.css";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: "/",
+          element: <Home />,
+        },
+        {
+          path: "listedBooks",
+          element: (
+            <PrivateRoute>
+              <ListedBooks />
+            </PrivateRoute>
+          ),
+          loader: () => fetch("/booksData.json"),
+        },
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+        },
+        {
+          path: "books/:bookId",
+          element: <BooksDetail />,
+          loader: () => fetch("/booksData.json"),
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "signup",
+          element: <SignUp />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "listedBooks",
-        element: <PrivateRoute><ListedBooks /></PrivateRoute> ,
-        loader: () => fetch("/booksData.json"),
-      },
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "books/:bookId",
-        element: <BooksDetail />,
-        loader: () => fetch("/booksData.json"),
-      },
-      {
-        path: "login",
-        element: <Login />,
-      },
-      {
-        path: "signup",
-        element: <SignUp />,
-      },
-    ],
-  },
-]);
+    future: {
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_skipActionErrorRevalidation: true,
+    },
+  }
+);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
